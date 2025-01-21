@@ -1,3 +1,4 @@
+from typing import Tuple
 import numpy as np #Numpy for efficient vecotr and matric operations
 import math
 from .util import calculate_distance_between_float
@@ -10,7 +11,8 @@ def calculate_unit_vector_float(
     node_j_x: float,
     node_j_y: float,
     node_j_z: float,
-) -> tuple[float, float, float]:
+) -> Tuple[float, float, float]:
+    
     """
     Calculate the unit vector that points from the start location to the end location.
 
@@ -44,9 +46,9 @@ def calculate_unit_vector_float(
 
 
 def calculate_moment_about_arbitrary_axis(
-    axis_uv: tuple[float, float, float],
-    radius_vector: tuple[float, float, float],
-    force_vector: tuple[float, float, float],
+    axis_uv: Tuple[float, float, float],
+    radius_vector: Tuple[float, float, float],
+    force_vector: Tuple[float, float, float],
 ) -> float:
     """
     Calculates the moment about an arbitrary axis.
@@ -69,10 +71,10 @@ def calculate_moment_about_arbitrary_axis(
 
 #FFunction to calculate the countering force required to balance a moment.
 def calculate_the_countering_force_to_a_moment(
-    axis_uv: tuple[float, float, float],
+    axis_uv: Tuple[float, float, float],
     moment_about_axis: float,
-    suspension_uv: tuple[float, float, float],
-    radius_vector: tuple[float, float, float],
+    suspension_uv: Tuple[float, float, float],
+    radius_vector: Tuple[float, float, float],
 ) -> float:
     """
     Calculates the counteracting force applied by a suspension element  based on the moment about an arbitrary axis.
@@ -102,7 +104,7 @@ def calculate_minimum_stand_off_point(
     building_top_corner_x: float,
     building_top_corner_y: float,
     
-)
+):
     #Calculate the distance from the boom's base to the building's top corner.
     boom_foot_pin_to_point_of_impact = math.sqrt(
         (building_top_corner_x - boom_foot_pin_x) ** 2
